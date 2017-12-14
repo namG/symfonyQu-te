@@ -1,0 +1,9 @@
+backend/runtime
+backend/web/assets
+console/migrations
+console/runtime
+docs
+frontend/runtime
+frontend/web/assets
+vagrant
+vendor
