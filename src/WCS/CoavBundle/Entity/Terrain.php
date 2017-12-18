@@ -45,9 +45,9 @@ class Terrain
     /**
      * @var float
      *
-     * @ORM\Column(name="longtitude", type="float")
+     * @ORM\Column(name="longitude", type="float")
      */
-    private $longtitude;
+    private $longitude ;
 
     /**
      * @var string
@@ -163,13 +163,13 @@ class Terrain
     /**
      * Set longtitude
      *
-     * @param float $longtitude
+     * @param float $longitude
      *
      * @return Terrain
      */
-    public function setLongtitude($longtitude)
+    public function setLongitude($longitude)
     {
-        $this->longtitude = $longtitude;
+        $this->longitude = $longitude;
 
         return $this;
     }
@@ -179,9 +179,9 @@ class Terrain
      *
      * @return float
      */
-    public function getLongtitude()
+    public function getLongitude()
     {
-        return $this->longtitude;
+        return $this->longitude;
     }
 
     /**
