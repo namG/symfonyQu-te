@@ -45,9 +45,9 @@ class Terrain
     /**
      * @var float
      *
-     * @ORM\Column(name="longtitude", type="float")
+     * @ORM\Column(name="longitude", type="float")
      */
-    private $longtitude;
+    private $longitude ;
 
     /**
      * @var string
