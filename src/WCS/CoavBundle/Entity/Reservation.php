@@ -42,6 +42,14 @@ class Reservation
      */
     private $passenger;
 
+	/**
+	 * @var array $passengers
+	 *
+	 * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reservations")
+	 * @ORM\JoinColumn(nullable=false)
+	*/
+	private $passengers;
+
     /**
      * @var string
      *
@@ -186,5 +194,45 @@ class Reservation
     {
         return $this->wasDone;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->passengers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add passenger
+     *
+     * @param \WCS\CoavBundle\Entity\User $passenger
+     *
+     * @return Reservation
+     */
+    public function addPassenger(\WCS\CoavBundle\Entity\User $passenger)
+    {
+        $this->passengers[] = $passenger;
+
+        return $this;
+    }
+
+    /**
+     * Remove passenger
+     *
+     * @param \WCS\CoavBundle\Entity\User $passenger
+     */
+    public function removePassenger(\WCS\CoavBundle\Entity\User $passenger)
+    {
+        $this->passengers->removeElement($passenger);
+    }
+
+    /**
+     * Get passengers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPassengers()
+    {
+        return $this->passengers;
+    }
+}

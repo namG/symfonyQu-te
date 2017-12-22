@@ -21,11 +21,12 @@ class Flight
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="departure", type="string", length=32)
-     */
+	/**
+	 * @var Terrain $departure
+	 *
+	 * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Terrain", inversedBy="departures")
+	 * @ORM\JoinColumn(nullable=false)
+	*/
     private $departure;
 
     /**
@@ -101,31 +102,7 @@ class Flight
     {
         return $this->id;
     }
-
-    /**
-     * Set departure
-     *
-     * @param string $departure
-     *
-     * @return Flight
-     */
-    public function setDeparture($departure)
-    {
-        $this->departure = $departure;
-
-        return $this;
-    }
-
-    /**
-     * Get departure
-     *
-     * @return string
-     */
-    public function getDeparture()
-    {
-        return $this->departure;
-    }
-
+	
     /**
      * Set arrival
      *
@@ -341,5 +318,28 @@ class Flight
     {
         return $this->wasDone;
     }
-}
 
+    /**
+     * Set departure
+     *
+     * @param \WCS\CoavBundle\Entity\Terrain $departure
+     *
+     * @return Flight
+     */
+    public function setDeparture(\WCS\CoavBundle\Entity\Terrain $departure)
+    {
+        $this->departure = $departure;
+
+        return $this;
+    }
+
+    /**
+     * Get departure
+     *
+     * @return \WCS\CoavBundle\Entity\Terrain
+     */
+    public function getDeparture()
+    {
+        return $this->departure;
+    }
+}
