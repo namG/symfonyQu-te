@@ -94,11 +94,27 @@ class Terrain
 	 */
     private $departures;
 
+	/**
+	 * @var array $arrivals
+	 *
+	 * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Flight", mappedBy="arrival")
+	 */
+    private $arrivals;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->departures = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->arrivals = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -178,7 +194,7 @@ class Terrain
     }
 
     /**
-     * Set longtitude
+     * Set longitude
      *
      * @param float $longitude
      *
@@ -192,7 +208,7 @@ class Terrain
     }
 
     /**
-     * Get longtitude
+     * Get longitude
      *
      * @return float
      */
@@ -296,13 +312,6 @@ class Terrain
     {
         return $this->country;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->departures = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add departure
@@ -336,5 +345,39 @@ class Terrain
     public function getDepartures()
     {
         return $this->departures;
+    }
+
+    /**
+     * Add arrival
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $arrival
+     *
+     * @return Terrain
+     */
+    public function addArrival(\WCS\CoavBundle\Entity\Flight $arrival)
+    {
+        $this->arrivals[] = $arrival;
+
+        return $this;
+    }
+
+    /**
+     * Remove arrival
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $arrival
+     */
+    public function removeArrival(\WCS\CoavBundle\Entity\Flight $arrival)
+    {
+        $this->arrivals->removeElement($arrival);
+    }
+
+    /**
+     * Get arrivals
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArrivals()
+    {
+        return $this->arrivals;
     }
 }

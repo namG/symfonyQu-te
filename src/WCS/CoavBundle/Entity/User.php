@@ -87,7 +87,8 @@ class User
     /**
      * @var int
      *
-     * @ORM\Column(name="reviews", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Review")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $reviews;
 
@@ -112,11 +113,18 @@ class User
 	 * @ORM\JoinColumn(nullable=false)
 	*/
 	private $reservations;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -332,35 +340,11 @@ class User
     /**
      * Get note
      *
-     * @return int
+     * @return integer
      */
     public function getNote()
     {
         return $this->note;
-    }
-
-    /**
-     * Set reviews
-     *
-     * @param integer $reviews
-     *
-     * @return User
-     */
-    public function setReviews($reviews)
-    {
-        $this->reviews = $reviews;
-
-        return $this;
-    }
-
-    /**
-     * Get reviews
-     *
-     * @return int
-     */
-    public function getReviews()
-    {
-        return $this->reviews;
     }
 
     /**
@@ -380,7 +364,7 @@ class User
     /**
      * Get isACertifiedPilot
      *
-     * @return bool
+     * @return boolean
      */
     public function getIsACertifiedPilot()
     {
@@ -404,18 +388,35 @@ class User
     /**
      * Get isActive
      *
-     * @return bool
+     * @return boolean
      */
     public function getIsActive()
     {
         return $this->isActive;
     }
+
     /**
-     * Constructor
+     * Set reviews
+     *
+     * @param \WCS\CoavBundle\Entity\Review $reviews
+     *
+     * @return User
      */
-    public function __construct()
+    public function setReviews(\WCS\CoavBundle\Entity\Review $reviews)
     {
-        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reviews = $reviews;
+
+        return $this;
+    }
+
+    /**
+     * Get reviews
+     *
+     * @return \WCS\CoavBundle\Entity\Review
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
     }
 
     /**

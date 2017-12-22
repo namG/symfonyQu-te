@@ -30,9 +30,10 @@ class Flight
     private $departure;
 
     /**
-     * @var string
+     * @var Terrain $arrival
      *
-     * @ORM\Column(name="arrival", type="string", length=32)
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Terrain", inversedBy="arrivals")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $arrival;
 
@@ -67,21 +68,21 @@ class Flight
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @var string
+     * @var User $pilot
      *
-     * @ORM\Column(name="pilot", type="string", length=32)
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\User")
      */
     private $pilot;
 
     /**
-     * @var string
+     * @var PlaneModel $plane
      *
-     * @ORM\Column(name="plane", type="string", length=64)
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\PlaneModel")
      */
     private $plane;
 
@@ -91,40 +92,16 @@ class Flight
      * @ORM\Column(name="wasDone", type="boolean")
      */
     private $wasDone;
-
+	
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
-    }
-	
-    /**
-     * Set arrival
-     *
-     * @param string $arrival
-     *
-     * @return Flight
-     */
-    public function setArrival($arrival)
-    {
-        $this->arrival = $arrival;
-
-        return $this;
-    }
-
-    /**
-     * Get arrival
-     *
-     * @return string
-     */
-    public function getArrival()
-    {
-        return $this->arrival;
     }
 
     /**
@@ -144,7 +121,7 @@ class Flight
     /**
      * Get nbFreeSeats
      *
-     * @return int
+     * @return integer
      */
     public function getNbFreeSeats()
     {
@@ -248,54 +225,6 @@ class Flight
     }
 
     /**
-     * Set pilot
-     *
-     * @param string $pilot
-     *
-     * @return Flight
-     */
-    public function setPilot($pilot)
-    {
-        $this->pilot = $pilot;
-
-        return $this;
-    }
-
-    /**
-     * Get pilot
-     *
-     * @return string
-     */
-    public function getPilot()
-    {
-        return $this->pilot;
-    }
-
-    /**
-     * Set plane
-     *
-     * @param string $plane
-     *
-     * @return Flight
-     */
-    public function setPlane($plane)
-    {
-        $this->plane = $plane;
-
-        return $this;
-    }
-
-    /**
-     * Get plane
-     *
-     * @return string
-     */
-    public function getPlane()
-    {
-        return $this->plane;
-    }
-
-    /**
      * Set wasDone
      *
      * @param boolean $wasDone
@@ -312,7 +241,7 @@ class Flight
     /**
      * Get wasDone
      *
-     * @return bool
+     * @return boolean
      */
     public function getWasDone()
     {
@@ -341,5 +270,77 @@ class Flight
     public function getDeparture()
     {
         return $this->departure;
+    }
+
+    /**
+     * Set arrival
+     *
+     * @param \WCS\CoavBundle\Entity\Terrain $arrival
+     *
+     * @return Flight
+     */
+    public function setArrival(\WCS\CoavBundle\Entity\Terrain $arrival)
+    {
+        $this->arrival = $arrival;
+
+        return $this;
+    }
+
+    /**
+     * Get arrival
+     *
+     * @return \WCS\CoavBundle\Entity\Terrain
+     */
+    public function getArrival()
+    {
+        return $this->arrival;
+    }
+
+    /**
+     * Set pilot
+     *
+     * @param \WCS\CoavBundle\Entity\User $pilot
+     *
+     * @return Flight
+     */
+    public function setPilot(\WCS\CoavBundle\Entity\User $pilot = null)
+    {
+        $this->pilot = $pilot;
+
+        return $this;
+    }
+
+    /**
+     * Get pilot
+     *
+     * @return \WCS\CoavBundle\Entity\User
+     */
+    public function getPilot()
+    {
+        return $this->pilot;
+    }
+
+    /**
+     * Set plane
+     *
+     * @param \WCS\CoavBundle\Entity\PlaneModel $plane
+     *
+     * @return Flight
+     */
+    public function setPlane(\WCS\CoavBundle\Entity\PlaneModel $plane = null)
+    {
+        $this->plane = $plane;
+
+        return $this;
+    }
+
+    /**
+     * Get plane
+     *
+     * @return \WCS\CoavBundle\Entity\PlaneModel
+     */
+    public function getPlane()
+    {
+        return $this->plane;
     }
 }

@@ -56,11 +56,10 @@ class PlaneModel
      */
     private $isAvailable;
 
-
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -132,7 +131,7 @@ class PlaneModel
     /**
      * Get cruiseSpeed
      *
-     * @return int
+     * @return integer
      */
     public function getCruiseSpeed()
     {
@@ -156,7 +155,7 @@ class PlaneModel
     /**
      * Get planeNbSeats
      *
-     * @return int
+     * @return integer
      */
     public function getPlaneNbSeats()
     {
@@ -180,7 +179,7 @@ class PlaneModel
     /**
      * Get isAvailable
      *
-     * @return bool
+     * @return boolean
      */
     public function getIsAvailable()
     {
