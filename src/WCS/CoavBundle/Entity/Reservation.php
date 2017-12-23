@@ -35,13 +35,13 @@ class Reservation
      */
     private $publicationDate;
 
-	/**
-	 * @var array $passengers
-	 *
-	 * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reservations")
-	 * @ORM\JoinColumn(nullable=false)
-	*/
-	private $passengers;
+    /**
+     * @var array $passengers
+     *
+     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reservations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $passengers;
 
     /**
      * @var Flight $flight

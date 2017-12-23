@@ -15,13 +15,15 @@ class PlaneModelType extends AbstractType
     {
         $builder->add('model')->add('manufacturer')->add('cruiseSpeed')->add('planeNbSeats')->add('isAvailable');
     }/**
-     * {@inheritdoc}
-     */
+      * {@inheritdoc}
+      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(
+            array(
             'data_class' => 'WCS\CoavBundle\Entity\PlaneModel'
-        ));
+            )
+        );
     }
 
     /**

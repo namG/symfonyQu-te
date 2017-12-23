@@ -15,13 +15,15 @@ class FlightType extends AbstractType
     {
         $builder->add('departure')->add('arrival')->add('nbFreeSeats')->add('seatPrice')->add('takeOffTime')->add('publicationDate')->add('description')->add('pilot')->add('plane')->add('wasDone');
     }/**
-     * {@inheritdoc}
-     */
+      * {@inheritdoc}
+      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(
+            array(
             'data_class' => 'WCS\CoavBundle\Entity\Flight'
-        ));
+            )
+        );
     }
 
     /**

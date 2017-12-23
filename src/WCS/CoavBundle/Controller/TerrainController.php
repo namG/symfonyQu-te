@@ -17,7 +17,7 @@ class TerrainController extends Controller
     /**
      * Lists all terrain entities.
      *
-     * @Route("/", name="terrain_index")
+     * @Route("/",    name="terrain_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,9 +26,11 @@ class TerrainController extends Controller
 
         $terrains = $em->getRepository('WCSCoavBundle:Terrain')->findAll();
 
-        return $this->render('terrain/index.html.twig', array(
+        return $this->render(
+            'terrain/index.html.twig', array(
             'terrains' => $terrains,
-        ));
+            )
+        );
     }
 
     /**
@@ -40,8 +42,10 @@ class TerrainController extends Controller
     public function showAction(Terrain $terrain)
     {
 
-        return $this->render('terrain/show.html.twig', array(
+        return $this->render(
+            'terrain/show.html.twig', array(
             'terrain' => $terrain,
-        ));
+            )
+        );
     }
 }

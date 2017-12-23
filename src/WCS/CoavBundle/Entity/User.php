@@ -106,13 +106,13 @@ class User
      */
     private $isActive;
 
-	/**
-	 * @var array $reservations
-	 *
-	 * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", inversedBy="passengers")
-	 * @ORM\JoinColumn(nullable=false)
-	*/
-	private $reservations;
+    /**
+     * @var array $reservations
+     *
+     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", inversedBy="passengers")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reservations;
     /**
      * Constructor
      */

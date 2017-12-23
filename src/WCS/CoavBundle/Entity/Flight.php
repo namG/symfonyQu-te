@@ -21,12 +21,12 @@ class Flight
      */
     private $id;
 
-	/**
-	 * @var Terrain $departure
-	 *
-	 * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Terrain", inversedBy="departures")
-	 * @ORM\JoinColumn(nullable=false)
-	*/
+    /**
+     * @var Terrain $departure
+     *
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Terrain", inversedBy="departures")
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $departure;
 
     /**
@@ -92,7 +92,7 @@ class Flight
      * @ORM\Column(name="wasDone", type="boolean")
      */
     private $wasDone;
-	
+    
 
     /**
      * Get id

@@ -17,7 +17,7 @@ class FlightController extends Controller
     /**
      * Lists all flight entities.
      *
-     * @Route("/", name="flight_index")
+     * @Route("/",    name="flight_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,15 +26,17 @@ class FlightController extends Controller
 
         $flights = $em->getRepository('WCSCoavBundle:Flight')->findAll();
 
-        return $this->render('flight/index.html.twig', array(
+        return $this->render(
+            'flight/index.html.twig', array(
             'flights' => $flights,
-        ));
+            )
+        );
     }
 
     /**
      * Creates a new flight entity.
      *
-     * @Route("/new", name="flight_new")
+     * @Route("/new",  name="flight_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -51,10 +53,12 @@ class FlightController extends Controller
             return $this->redirectToRoute('flight_show', array('id' => $flight->getId()));
         }
 
-        return $this->render('flight/new.html.twig', array(
+        return $this->render(
+            'flight/new.html.twig', array(
             'flight' => $flight,
             'form' => $form->createView(),
-        ));
+            )
+        );
     }
 
     /**
@@ -67,17 +71,19 @@ class FlightController extends Controller
     {
         $deleteForm = $this->createDeleteForm($flight);
 
-        return $this->render('flight/show.html.twig', array(
+        return $this->render(
+            'flight/show.html.twig', array(
             'flight' => $flight,
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Displays a form to edit an existing flight entity.
      *
      * @Route("/{id}/edit", name="flight_edit")
-     * @Method({"GET", "POST"})
+     * @Method({"GET",      "POST"})
      */
     public function editAction(Request $request, Flight $flight)
     {
@@ -91,17 +97,19 @@ class FlightController extends Controller
             return $this->redirectToRoute('flight_edit', array('id' => $flight->getId()));
         }
 
-        return $this->render('flight/edit.html.twig', array(
+        return $this->render(
+            'flight/edit.html.twig', array(
             'flight' => $flight,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+            )
+        );
     }
 
     /**
      * Deletes a flight entity.
      *
-     * @Route("/{id}", name="flight_delete")
+     * @Route("/{id}",   name="flight_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Flight $flight)
@@ -130,7 +138,6 @@ class FlightController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('flight_delete', array('id' => $flight->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
