@@ -19,7 +19,13 @@
             </tr>
             <tr>
                 <th>Passenger</th>
-                <td>{{ reservation.passenger }}</td>
+                <td>
+                    <ul>
+                        {% for passenger in reservation.passengers %}
+                            <li>{{ passenger.firstName }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
             </tr>
             <tr>
                 <th>Flight</th>

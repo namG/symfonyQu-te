@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Flight
 {
+	/**
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return $this->takeOffTime->format('Y-m-d H:i:s');
+	}
+
     /**
      * @var int
      *
@@ -92,7 +100,8 @@ class Flight
      * @ORM\Column(name="wasDone", type="boolean")
      */
     private $wasDone;
-    
+
+	// Generated Code
 
     /**
      * Get id

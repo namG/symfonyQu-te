@@ -12,7 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User
 {
-    /**
+	/**
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return $this->userName;
+	}
+
+	/**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -85,10 +93,10 @@ class User
     private $note;
 
     /**
-     * @var int
+     * @var Review
      *
      * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Review")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $reviews;
 
@@ -109,10 +117,14 @@ class User
     /**
      * @var array $reservations
      *
-     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", inversedBy="passengers")
+     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", mappedBy="passengers")
      * @ORM\JoinColumn(nullable=false)
      */
     private $reservations;
+
+    // Generated Code
+
+
     /**
      * Constructor
      */
@@ -402,7 +414,7 @@ class User
      *
      * @return User
      */
-    public function setReviews(\WCS\CoavBundle\Entity\Review $reviews)
+    public function setReviews(\WCS\CoavBundle\Entity\Review $reviews = null)
     {
         $this->reviews = $reviews;
 

@@ -56,6 +56,9 @@ class Review
      */
     private $reviewAuthor;
 
+	// Generated Code
+
+
     /**
      * Get id
      *

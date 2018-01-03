@@ -5,7 +5,8 @@ namespace WCS\CoavBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * 
+ * Class DefaultController
+ * @package WCS\CoavBundle\Controller
  */
 class DefaultController extends Controller
 {

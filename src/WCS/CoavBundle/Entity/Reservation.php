@@ -38,7 +38,7 @@ class Reservation
     /**
      * @var array $passengers
      *
-     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reservations")
+     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $passengers;
@@ -56,6 +56,11 @@ class Reservation
      * @ORM\Column(name="wasDone", type="boolean")
      */
     private $wasDone;
+
+
+    // Generated Code
+
+
     /**
      * Constructor
      */
