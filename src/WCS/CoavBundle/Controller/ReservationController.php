@@ -6,6 +6,7 @@ use WCS\CoavBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use WCS\CoavBundle\Form\ReservationType;
 
 /**
  * Reservation controller.
@@ -42,7 +43,7 @@ class ReservationController extends Controller
     public function newAction(Request $request)
     {
         $reservation = new Reservation();
-        $form = $this->createForm('WCS\CoavBundle\Form\ReservationType', $reservation);
+        $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

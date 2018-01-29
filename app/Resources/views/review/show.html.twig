@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}WCSCoavBundle:Review:show{% endblock %}
+{% block body %}
+    <h1>User Reviews</h1>
+<table class="table">
+    <tbody>
+    <tr><th><Id</th> </tr>
+        <td>{{ review.id }}</td>
+    <tr><th>text</th></tr>
+       <tr><td>{{ review.text }}</td></tr>
+       <tr> <th>publicationDate</th></tr>
+    <tr> <td>{{ review.publicationDate|date('Y-m-d H:i:s') }}</td></tr>
+    <tr> <th>note</th></tr>
+    <tr><td>{{ review.note }}</td></tr>
+    </tbody>
+</table>
+<ul>
+    <li>
+        <a href="{{ path('review_index') }}">Back to review</a>
+    </li>
+
+    <li>
+        <a href="{{ path('review_edit', { 'id': review.id }) }}">Edit</a>
+    </li>
+
+</ul>
+
+
+
+
+
+
+
+{% endblock %}
